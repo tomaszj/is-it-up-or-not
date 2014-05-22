@@ -1,0 +1,36 @@
+<h2>Server state</h2>
+
+<div ng-controller="IndicatorController">
+  <div class="panel" ng-class="{'panel-success': isFlagUp(flag), 'panel-danger': isFlagDown(flag)}">
+    <div class="panel-heading">
+      <h2 class="panel-title" ng-if="!isInEditMode()">{{ flag.title }}</h2>
+      <input type="text" class="indicator form-control panel-title" ng-if="isInEditMode()" ng-model="flag.title" />
+    </div>
+
+    <div class="panel-body">
+      <p>State: {{ flag.state | uppercase }}</p>
+      <p ng-if="isFlagDown(flag)">
+        <span ng-if="!isInEditMode()">Reason: {{ flag.reason }}</span>
+        <span ng-if="isInEditMode()">
+          Reason: 
+          <input type="text" class="form-control" ng-model="flag.reason" />
+        </span>
+      </p>
+      <p ng-if="!isInEditMode()">
+      <a href="" ng-if="isFlagDown(flag)" ng-click="setFlagUp(flag)">It's up for me!</a>  
+      <a href="" ng-if="isFlagUp(flag)" ng-click="setFlagDown(flag)">It's down for me!</a>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    <a href="" class="btn btn-default" ng-if="!isInEditMode()" ng-click="turnOnEditMode()">Edit</a>
+    <a href="" class="btn btn-success" ng-if="isInEditMode()" ng-click="commitEditModeWithFlag(flag)">Save</a>
+    <a href="" class="btn btn-default" ng-if="isInEditMode()" ng-click="cancelEditMode()">Cancel editing</a>
+  </p>
+  <p ng-if="!isInEditMode()">
+    <a href="/flags" class="btn btn-default">Back</a>
+    <a href="" class="btn btn-danger" ng-click="destroyFlag(flag)">Delete</a>
+  </p>
+</div>
+ 
