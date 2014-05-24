@@ -6,12 +6,16 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :flags, only: [:index, :show, :create, :update, :destroy]
     end
+    
+    match '(*all)', to: '/static#not_found', via: :all
   end
+  
+  
   
   match '(*all_params)', to: 'static#main', via: :all
   
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'welcome#index'  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
