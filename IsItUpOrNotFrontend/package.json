@@ -14,6 +14,7 @@
     "lineman-angular": ">= 0.2.0",
     "lineman-bower": "0.0.3",
     "lineman-less": "0.0.1",
+    "lineman-rails": "0.0.2",
     "protractor": ">=0.8.0"
   },
   "scripts": {
