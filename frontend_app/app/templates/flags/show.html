@@ -1,30 +1,47 @@
 <h2>Server state</h2>
 
 <div ng-controller="IndicatorController">
-  <div class="panel" ng-class="{'panel-success': isFlagUp(flag), 'panel-danger': isFlagDown(flag)}">
+  <div class="panel" ng-if="!isInEditMode()" ng-class="{'panel-success': isFlagUp(flag), 'panel-danger': isFlagDown(flag)}">
     <div class="panel-heading">
-      <h2 class="panel-title" ng-if="!isInEditMode()">{{ flag.title }}</h2>
-      <input type="text" class="indicator form-control panel-title" ng-if="isInEditMode()" ng-model="flag.title" />
+      <h2 class="panel-title">{{ flag.title }}</h2>
     </div>
-
+    <!-- Edit mode OFF form -->
     <div class="panel-body">
       <p>State: {{ flag.state | uppercase }}</p>
       <p ng-if="isFlagDown(flag)">
-        <span ng-if="!isInEditMode()">Reason: {{ flag.reason }}</span>
-        <span ng-if="isInEditMode()">
-          Reason: 
-          <input type="text" class="form-control" ng-model="flag.reason" />
-        </span>
+        <span>Reason: {{ flag.reason }}</span>
       </p>
-      <p ng-if="!isInEditMode()">
-      <a href="" ng-if="isFlagDown(flag)" ng-click="setFlagUp(flag)">It's up for me!</a>  
-      <a href="" ng-if="isFlagUp(flag)" ng-click="setFlagDown(flag)">It's down for me!</a>
+      <p>
+        <a href="" ng-if="isFlagDown(flag)" ng-click="commitFlagUp(flag)">It's up for me!</a>  
+        <a href="" ng-if="isFlagUp(flag)" ng-click="commitFlagDown(flag)">It's down for me!</a>
       </p>
     </div>
+    <!-- End of Edit mode OFF form -->
+  </div>
+  
+  <div class="panel" ng-if="isInEditMode()" ng-class="{'panel-success': isFlagUp(editedFlag), 'panel-danger': isFlagDown(editedFlag)}">
+    <div class="panel-heading">
+      <input type="text" class="indicator form-control panel-title" ng-model="editedFlag.title" />
+    </div>
+    <!-- Edit mode ON form -->
+    <div class="panel-body">
+      <p>State: {{ editedFlag.state | uppercase }}</p>
+      <p ng-if="isFlagDown(editedFlag)">
+        <span>
+          Reason: 
+          <input type="text" class="form-control" ng-model="editedFlag.reason" />
+        </span>
+      </p>
+      <p>
+        <a href="" ng-if="isFlagDown(editedFlag)" ng-click="setFlagUp(editedFlag)">It's up for me!</a>  
+        <a href="" ng-if="isFlagUp(editedFlag)" ng-click="setFlagDown(editedFlag)">It's down for me!</a>
+      </p>
+    </div>
+    <!-- End of Edit mode ON form -->
   </div>
 
   <p>
-    <a href="" class="btn btn-default" ng-if="!isInEditMode()" ng-click="turnOnEditMode()">Edit</a>
+    <a href="" class="btn btn-default" ng-if="!isInEditMode()" ng-click="turnOnEditModeWithFlag(flag)">Edit</a>
     <a href="" class="btn btn-success" ng-if="isInEditMode()" ng-click="commitEditModeWithFlag(flag)">Save</a>
     <a href="" class="btn btn-default" ng-if="isInEditMode()" ng-click="cancelEditMode()">Cancel editing</a>
   </p>
