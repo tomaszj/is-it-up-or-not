@@ -1,0 +1,24 @@
+{
+  "name": "IsItUpOrNot",
+  "title": "Frontend to application allowing to see the status of your projects at a glance.",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Tomasz Janeczko",
+    "company": "Kainos Software"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "jasmine-given": "~2.1.0",
+    "lineman": ">= 0.28.0",
+    "lineman-angular": ">= 0.2.0",
+    "lineman-bower": "0.0.3",
+    "lineman-less": "0.0.1",
+    "lineman-rails": "0.0.2",
+    "protractor": ">=0.8.0"
+  },
+  "scripts": {
+    "start": "lineman run",
+    "test": "lineman spec-ci"
+  }
+}
