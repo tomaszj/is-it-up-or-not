@@ -12,8 +12,8 @@
       </p>
     </div>
     <div class="panel-footer">
-      <a href="" ng-if="isFlagDown(flag)" ng-click="setFlagUp(flag)">It's up for me!</a>  
-      <a href="" ng-if="isFlagUp(flag)" ng-click="setFlagDown(flag)">It's down for me!</a>
+      <a href="" ng-if="isFlagDown(flag)" ng-click="commitFlagUp(flag)">It's up for me!</a>  
+      <a href="" ng-if="isFlagUp(flag)" ng-click="commitFlagDown(flag)">It's down for me!</a>
       &nbsp;|&nbsp;
       <a href="/flags/{{flag.id}}">Show</a>
     </div>
