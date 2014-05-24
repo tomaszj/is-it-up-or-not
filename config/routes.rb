@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     end
   end
   
-  # match '(*all_params)', to: 'static#main', via: :get
+  match '(*all_params)', to: 'static#main', via: :all
   
   # You can have the root of your site routed with "root"
-  root 'static#main'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
