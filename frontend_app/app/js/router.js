@@ -10,7 +10,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     controller: 'FlagsController',
     templateUrl: 'flags/index.html',
     resolve: {
-      flags: function(FlagService, $q) {
+      flags: ['FlagService', '$q', function(FlagService, $q) {
         var defer = $q.defer();
         FlagService.findAll().$promise.then(function (flags) {
           return defer.resolve(flags);
@@ -19,7 +19,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
           return defer.reject({});
         });
         return defer.promise;
-      }
+      }]
     }
   });
 
@@ -32,7 +32,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
     controller: 'FlagController',
     templateUrl: 'flags/show.html',
     resolve: {
-      flag: function(FlagService, $q, $route) {
+      flag: ['FlagService', '$q', '$route', function(FlagService, $q, $route) {
         var defer = $q.defer();
         FlagService.find($route.current.params.id).$promise.then(function(flag) {
           return defer.resolve(flag); 
@@ -41,7 +41,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
           return defer.reject({});
         });
         return defer.promise;
-      }
+      }]
     }
   });
 
