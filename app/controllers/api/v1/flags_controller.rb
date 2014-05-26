@@ -1,7 +1,7 @@
 class Api::V1::FlagsController < ApplicationController
 
   def index
-    @flags = Flag.all
+    @flags = Flag.order(:created_at)
     render json: @flags
   end
 
