@@ -1,5 +1,7 @@
 <h2>Server state</h2>
 
+<error />
+
 <div ng-controller="IndicatorController">
   <div class="panel" ng-if="!isInEditMode()" ng-class="{'panel-success': isFlagUp(flag), 'panel-danger': isFlagDown(flag)}">
     <div class="panel-heading">

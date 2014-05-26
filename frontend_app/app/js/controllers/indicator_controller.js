@@ -1,5 +1,5 @@
 // with $resource
-angular.module("app").controller("IndicatorController", function ($scope, $location, FlagResource) {
+angular.module("app").controller("IndicatorController", function ($scope, $location, FlagService) {
 
   var isInEditMode = false;
   $scope.editedFlag = null;
@@ -26,34 +26,32 @@ angular.module("app").controller("IndicatorController", function ($scope, $locat
   };
 
   $scope.isFlagUp = function(flag) {
-    return flag.state === 'up';
+    return FlagService.isFlagUp(flag);
   };
 
   $scope.isFlagDown = function(flag) {
-    return flag.state === 'down';
+    return FlagService.isFlagDown(flag);
   };
 
   $scope.setFlagUp = function(flag) {
-    flag.state = 'up';
+    FlagService.setFlagUp(flag);
   };
 
   $scope.commitFlagUp = function(flag) {
-    $scope.setFlagUp(flag);
-    FlagResource.update({id: flag.id}, flag);
+    FlagService.commitFlagUp(flag);
   };
 
   $scope.setFlagDown = function(flag) {
-    flag.state = 'down';
+    FlagService.setFlagDown(flag);
   };
 
   $scope.commitFlagDown = function(flag) {
-    $scope.setFlagDown(flag);
-    FlagResource.update({id: flag.id}, flag);
+    FlagService.commitFlagDown(flag);
   };
 
   $scope.destroyFlag = function(flag) {
-    flag.$delete();
-    $location.path('/flags');
+    FlagService.destroyFlag(flag);
+    $location.path("/flags");
   };
 });
 
