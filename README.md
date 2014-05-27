@@ -4,7 +4,7 @@ Simple app to monitor a status of environments. Allows to set them "Up" and "Dow
 
 ## Deployment
 
-App can be deployed straight to Heroku.
+App can be deployed straight to Heroku. Standard `git push heroku master` and then `heroku run rake db:migrate && heroku run rake db:seed` should suffice.
 
 ## Development
 
