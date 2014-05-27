@@ -29,10 +29,10 @@ This app is split into two parts:
 
 To run the app, run two processes:
 
-    # In *root* folder:
+    # In root folder:
     $ bundle exec rails server 
 
-    # In *frontend_app* folder:
+    # In frontend_app folder:
     $ lineman run
 
 This will run a backend server on port 3000 and JS server on port 8000.
@@ -42,10 +42,10 @@ Application can be accessed using localhost:8000. JS server proxies all API requ
 
 Once happy with your changes, you need some work to prepare all CSS/JS files ready for production. To do this:
 
-    # In *frontend_app* folder:
+    # In frontend_app folder:
     $ lineman build
 
-    # In *root* folder:
+    # In root folder:
     $ rake assets:precompile
 
 This compiles minified JS and CSS files. The latter puts this in Rails assets folder. Thanks to the extra step, there's
