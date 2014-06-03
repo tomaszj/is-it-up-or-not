@@ -20,7 +20,7 @@ In *frontend_app* folder:
 
     $ npm install
 
-### Workflow
+### Development workflow
 
 This app is split into two parts:
 
