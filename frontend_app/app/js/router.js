@@ -9,18 +9,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/flags', {
     controller: 'FlagsController',
     templateUrl: 'flags/index.html',
-    resolve: {
-      flags: ['FlagService', '$q', function(FlagService, $q) {
-        var defer = $q.defer();
-        FlagService.findAll().$promise.then(function (flags) {
-          return defer.resolve(flags);
-        }, function(err) {
-          console.log(err);
-          return defer.reject({});
-        });
-        return defer.promise;
-      }]
-    }
+    resolve: FlagsController.resolve
   });
 
   $routeProvider.when('/flags/new', {
@@ -31,18 +20,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/flags/:id', {
     controller: 'FlagController',
     templateUrl: 'flags/show.html',
-    resolve: {
-      flag: ['FlagService', '$q', '$route', function(FlagService, $q, $route) {
-        var defer = $q.defer();
-        FlagService.find($route.current.params.id).$promise.then(function(flag) {
-          return defer.resolve(flag); 
-        }, function (err) {
-          console.log(err);
-          return defer.reject({});
-        });
-        return defer.promise;
-      }]
-    }
+    resolve: FlagController.resolve
   });
 
   $routeProvider.otherwise({ redirectTo: '/flags' });
