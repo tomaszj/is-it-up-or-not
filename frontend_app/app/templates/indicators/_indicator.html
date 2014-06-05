@@ -10,6 +10,12 @@
       <p ng-if="isFlagDown(flag)">
         Reason: {{ flag.reason }}
       </p>
+      <p ng-if="flag.promotable">
+        Can promote: {{ flag.can_promote | booleanToString }}
+      </p>
+      <p ng-if="flag.mergeable">
+        Merging: {{ flag.merge_status }}
+      </p>
     </div>
     <div class="panel-footer">
       <a href="" ng-if="isFlagDown(flag)" ng-click="commitFlagUp(flag)">It's up for me!</a>  

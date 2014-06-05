@@ -17,6 +17,12 @@
         <a href="" ng-if="isFlagDown(flag)" ng-click="commitFlagUp(flag)">It's up for me!</a>  
         <a href="" ng-if="isFlagUp(flag)" ng-click="commitFlagDown(flag)">It's down for me!</a>
       </p>
+      <p ng-if="flag.promotable">
+        Can promote: {{ flag.can_promote | booleanToString }}
+      </p>
+      <p ng-if="flag.mergeable">
+        Merging: {{ flag.merge_status }}
+      </p>
     </div>
     <!-- End of Edit mode OFF form -->
   </div>
@@ -28,16 +34,42 @@
     <!-- Edit mode ON form -->
     <div class="panel-body">
       <p>State: {{ editedFlag.state | uppercase }}</p>
+      <p>
+        <a href="" ng-if="isFlagDown(editedFlag)" ng-click="setFlagUp(editedFlag)">It's up for me!</a>  
+        <a href="" ng-if="isFlagUp(editedFlag)" ng-click="setFlagDown(editedFlag)">It's down for me!</a>
+      </p>
       <p ng-if="isFlagDown(editedFlag)">
         <span>
           Reason: 
           <input type="text" class="form-control" ng-model="editedFlag.reason" />
         </span>
       </p>
-      <p>
-        <a href="" ng-if="isFlagDown(editedFlag)" ng-click="setFlagUp(editedFlag)">It's up for me!</a>  
-        <a href="" ng-if="isFlagUp(editedFlag)" ng-click="setFlagDown(editedFlag)">It's down for me!</a>
-      </p>
+      <h3>Promotion</h3>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="promotable" ng-model="editedFlag.promotable" />
+          Can this environment be promoted at all?
+        </label>
+      </div>
+      <div class="checkbox" ng-if="editedFlag.promotable">
+        <label>
+           <input type="checkbox" ng-model="editedFlag.can_promote" />
+           Is it ok to be promoted?
+        </label>
+      </div>
+      <h3>Merging</h3>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="mergeable" ng-model="editedFlag.mergeable" />
+          Can the code be merged for this environment?
+        </label>
+      </div>
+      <div class="form-group" ng-if="editedFlag.mergeable">
+        <span>
+          Current merge status: 
+          <input type="text" class="form-control" ng-model="editedFlag.merge_status" />
+        </span>
+      </div>
     </div>
     <!-- End of Edit mode ON form -->
   </div>
