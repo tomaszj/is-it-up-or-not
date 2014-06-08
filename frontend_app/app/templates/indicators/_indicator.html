@@ -5,10 +5,7 @@
     </div> 
     <div class="panel-body">
       <p>
-        It is {{ flag.state | uppercase }}
-      </p>
-      <p>
-        Last updated: {{ flag.updated_at }}
+        It is {{ flag.state | uppercase }} as of {{ flag.updated_at | stringToDatetime }}
       </p>
       <p ng-if="isFlagDown(flag)">
         Reason: {{ flag.reason }}
