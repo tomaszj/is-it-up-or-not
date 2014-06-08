@@ -7,6 +7,9 @@
       <p>
         It is {{ flag.state | uppercase }}
       </p>
+      <p>
+        Last updated: {{ flag.updated_at }}
+      </p>
       <p ng-if="isFlagDown(flag)">
         Reason: {{ flag.reason }}
       </p>
@@ -15,7 +18,7 @@
       </p>
       <p ng-if="flag.mergeable">
         Merging: {{ flag.merge_status }}
-      </p>
+      </p> 
     </div>
     <div class="panel-footer">
       <a href="" ng-if="isFlagDown(flag)" ng-click="commitFlagUp(flag)">It's up for me!</a>  
