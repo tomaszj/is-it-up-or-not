@@ -34,8 +34,8 @@ angular.module("app").factory("FlagService", function(FlagResource) {
     FlagResource.update({id: flag.id}, flag);
   };
 
-  this.destroyFlag = function(flag) {
-    flag.$delete();
+  this.destroyFlag = function(flag, success) {
+    return flag.$delete(success);
   };
 
   this.createFlag = function(flag, success, error) {

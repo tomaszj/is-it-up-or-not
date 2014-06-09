@@ -1,5 +1,5 @@
 // with $resource
-angular.module("app").controller("IndicatorController", function ($scope, $location, FlagService) {
+angular.module("app").controller("IndicatorController", function ($scope, $location, $window, FlagService) {
 
   var isInEditMode = false;
   $scope.editedFlag = null;
@@ -50,9 +50,10 @@ angular.module("app").controller("IndicatorController", function ($scope, $locat
   };
 
   $scope.destroyFlag = function(flag) {
-    if (window.confirm("Do you want to delete " + flag.title + " environment?")) {
-      FlagService.destroyFlag(flag);
-      $location.path("/flags");
+    if ($window.confirm("Do you want to delete " + flag.title + " environment?")) {
+      FlagService.destroyFlag(flag, function() {
+        $location.path("/flags");
+      });
     }
   };
 });
