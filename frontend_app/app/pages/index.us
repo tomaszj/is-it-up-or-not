@@ -3,6 +3,7 @@
   <head>
     <title><%= pkg.name %></title>
     <link rel="stylesheet" type="text/css" href="/css/app.css" media="all" />
+    <meta http-equiv="refresh" content="30">
   </head>
   <body>
     <div class="container" ng-controller="AppController">
