@@ -1,6 +1,5 @@
-angular.module("app").filter("stringToDatetime", function() {
+angular.module("app").filter("stringToDatetime", function($filter) {
   return function(input) {
-    var parsedDate = new Date(input);
-    return parsedDate.toLocaleTimeString() + " " + parsedDate.toLocaleDateString();
+    return $filter('date')(input, 'HH:mm - dd MMM');
   };
 });
