@@ -9,7 +9,7 @@
     </div>
     <!-- Edit mode OFF form -->
     <div class="panel-body">
-      <p>State: {{ flag.state | uppercase }}</p>
+      <p>State: {{ flag.state | uppercase }} as of {{ flag.updated_at | stringToDatetime }} </p>
       <p ng-if="isFlagDown(flag)">
         <span>Reason: {{ flag.reason }}</span>
       </p>
@@ -22,7 +22,7 @@
       </p>
       <p ng-if="flag.mergeable">
         Merging: {{ flag.merge_status }}
-      </p>
+      </p> 
     </div>
     <!-- End of Edit mode OFF form -->
   </div>
