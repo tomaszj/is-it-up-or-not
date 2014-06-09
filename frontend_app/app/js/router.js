@@ -5,8 +5,7 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/', {
     redirectTo: '/flags' 
   });
-
-  $routeProvider.when('/flags', {
+  var flagsRouteConfig = {
     controller: 'FlagsController',
     templateUrl: 'flags/index.html',
     resolve: {
@@ -21,7 +20,10 @@ angular.module("app").config(function($routeProvider, $locationProvider) {
         return defer.promise;
       }]
     }
-  });
+  };
+
+  $routeProvider.when('/flags', flagsRouteConfig);
+  $routeProvider.when('/flegs', flagsRouteConfig);
 
   $routeProvider.when('/flags/new', {
     controller: 'NewFlagController',
