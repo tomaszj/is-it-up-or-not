@@ -1,32 +1,16 @@
 angular.module("app").factory("FlagService", function(FlagResource) {
   
   this.findAll = function() {
-    return FlagResource.query(); 
+    return FlagResource.query().$promise; 
   };
 
   this.find = function(id) {
-    return FlagResource.get({id: id});
-  };
-
-  this.isFlagUp = function(flag) {
-    return flag.state === 'up';
-  };
-
-  this.isFlagDown = function(flag) {
-    return flag.state === 'down';
-  };
-
-  this.setFlagUp = function(flag) {
-    flag.state = 'up';
+    return FlagResource.get({id: id}).$promise;
   };
 
   this.commitFlagUp = function(flag) {
     this.setFlagUp(flag);
     FlagResource.update({id: flag.id}, flag);
-  };
-
-  this.setFlagDown = function(flag) {
-    flag.state = 'down';
   };
 
   this.commitFlagDown = function(flag) {
@@ -41,6 +25,25 @@ angular.module("app").factory("FlagService", function(FlagResource) {
   this.createFlag = function(flag, success, error) {
     FlagResource.save(flag, success, error);
   };
+
+  // Model functions.
+  this.isFlagUp = function(flag) {
+    return flag.state === 'up';
+  };
+
+  this.isFlagDown = function(flag) {
+    return flag.state === 'down';
+  };
+
+  this.setFlagUp = function(flag) {
+    flag.state = 'up';
+  };
+
+  this.setFlagDown = function(flag) {
+    flag.state = 'down';
+  };
+
+
 
   return this;
 });

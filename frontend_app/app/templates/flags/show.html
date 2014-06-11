@@ -2,7 +2,7 @@
 
 <error />
 
-<div ng-controller="IndicatorController">
+<div ng-controller="IndicatorController" ng-if="!!flag">
   <div class="panel" ng-if="!isInEditMode()" ng-class="{'panel-success': isFlagUp(flag), 'panel-danger': isFlagDown(flag)}">
     <div class="panel-heading">
       <h2 class="panel-title">{{ flag.title }}</h2>
