@@ -19,7 +19,7 @@ angular.module("app").controller("IndicatorController", function ($scope, $locat
   };
 
   $scope.commitEditModeWithFlag = function(flag) {
-    FlagService.updateFlag(editedFlag, function() {
+    FlagService.updateFlag($scope.editedFlag, function() {
       angular.extend(flag, $scope.editedFlag);
       $scope.editedFlag = null;
       isInEditMode = false; 
