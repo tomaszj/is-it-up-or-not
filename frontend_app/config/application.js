@@ -24,7 +24,7 @@ module.exports = function(lineman) {
     // }
 
     server: {
-      pushState: true,
+      //pushState: true,
       
       // API Proxying
       //
