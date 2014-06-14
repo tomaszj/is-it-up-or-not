@@ -8,7 +8,8 @@ describe "service: FlagService", ->
         query: null,
         get: null,
         save: null,
-        update: null
+        update: null,
+        delete: null
       }
       $provide.value("FlagResource", FlagResource)
       undefined
@@ -42,12 +43,23 @@ describe "service: FlagService", ->
 
       expect(FlagResource.save).toHaveBeenCalledWith(flag, successFn, errorFn)
 
-  describe "Destroying a flag", ->
-    it "should call $delete function on passed flag", ->
-      flag = jasmine.createSpyObj('flag', ['$delete'])
+  describe "Updating a flag", ->
+    it "should call update function on FlagResource", ->
+      flag = {}
       successFn = ->
+      spyOn(FlagResource, 'update')
+
+      @FlagService.updateFlag(flag, successFn)
+
+      expect(FlagResource.update).toHaveBeenCalledWith({id: flag.id}, flag, successFn)
+
+  describe "Destroying a flag", ->
+    it "should call delete function on FlagResource", ->
+      flag = {}
+      successFn = ->
+      spyOn(FlagResource, 'delete')
 
       @FlagService.destroyFlag(flag, successFn)
 
-      expect(flag.$delete).toHaveBeenCalledWith(successFn)
+      expect(FlagResource.delete).toHaveBeenCalledWith({id: flag.id}, successFn)
 

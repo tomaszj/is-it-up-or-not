@@ -18,8 +18,12 @@ angular.module("app").factory("FlagService", function(FlagResource) {
     FlagResource.update({id: flag.id}, flag);
   };
 
+  this.updateFlag = function(flag, success) {
+    return FlagResource.update({id: flag.id}, flag, success);
+  };
+
   this.destroyFlag = function(flag, success) {
-    return flag.$delete(success);
+    return FlagResource.delete({id: flag.id}, success);
   };
 
   this.createFlag = function(flag, success, error) {
@@ -42,8 +46,6 @@ angular.module("app").factory("FlagService", function(FlagResource) {
   this.setFlagDown = function(flag) {
     flag.state = 'down';
   };
-
-
 
   return this;
 });
