@@ -8,6 +8,10 @@ App can be deployed straight to Heroku. Standard `git push heroku master` and th
 
 ## Development
 
+### Pre-requisites
+
+For local tests, please change the ruby version in Gemfile to whatever your system uses, or install respective version using tool like rbenv.
+
 ### Environment
 
 In *root* folder, run:
