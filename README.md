@@ -12,9 +12,9 @@ App can be deployed straight to Heroku. Standard `git push heroku master` and th
 
 In *root* folder, run:
 
-    $ bundle install && rake db:migrate
+    $ bundle install && bundle exec rake db:migrate
     # If you want to pre-load the data:
-    $ rake db:seed
+    $ bundle exec rake db:seed
 
 In *frontend_app* folder:
 
@@ -30,7 +30,7 @@ This app is split into two parts:
 To run the app, run two processes:
 
     # In root folder:
-    $ bundle exec rails server 
+    $ bundle exec rails server
 
     # In frontend_app folder:
     $ lineman run
@@ -46,7 +46,7 @@ Once happy with your changes, you need some work to prepare all CSS/JS files rea
     $ lineman build
 
     # In root folder:
-    $ rake assets:precompile
+    $ bundle exec rake assets:precompile
 
 This compiles minified JS and CSS files. The latter puts this in Rails assets folder. Thanks to the extra step, there's
 no need for NodeJS environment on Heroku.
