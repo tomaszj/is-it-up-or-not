@@ -12,7 +12,7 @@ App can be deployed straight to Heroku. Standard `git push heroku master` and th
 
 In *root* folder, run:
 
-    $ bundle install && bundle exec rake db:migrate
+    $ bundle install --without production && bundle exec rake db:migrate
     # If you want to pre-load the data:
     $ bundle exec rake db:seed
 
