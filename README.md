@@ -55,3 +55,7 @@ Once happy with your changes, you need some work to prepare all CSS/JS files rea
 This compiles minified JS and CSS files. The latter puts this in Rails assets folder. Thanks to the extra step, there's
 no need for NodeJS environment on Heroku.
 
+## Known problems
+
+Sometimes lineman stops working complaining about bower:install step failing. Running `bower update` seems to resolve the issue. Credit to @petems.
+
