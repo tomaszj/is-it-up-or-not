@@ -37,7 +37,7 @@ To run the app, run two processes:
     $ bundle exec rails server
 
     # In frontend_app folder:
-    $ lineman run
+    $ lineman grunt pages && lineman run
 
 This will run a backend server on port 3000 and JS server on port 8000.
 Application can be accessed using localhost:8000. JS server proxies all API requests to port 3000, preventing CORS problems.
@@ -58,4 +58,6 @@ no need for NodeJS environment on Heroku.
 ## Known problems
 
 Sometimes lineman stops working complaining about bower:install step failing. Running `bower update` seems to resolve the issue. Credit to @petems.
+
+`lineman grunt pages` needs to be ran everytime the generated html gets deleted. I don't know the reason why it's not generated, but this way it works as expected.
 
