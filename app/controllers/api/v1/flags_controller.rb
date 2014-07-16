@@ -36,6 +36,6 @@ class Api::V1::FlagsController < ApplicationController
 
   private
   def permitted_params
-    params.permit(:title, :state, :reason, :promotable, :can_promote, :mergeable, :merge_status)
+    params.permit(:title, :state, :reason, :promotable, :can_promote, :mergeable, :merge_status, :investigating, :person_investigating)
   end
 end
