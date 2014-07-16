@@ -2,7 +2,5 @@
   "name": "IsItUpOrNot",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": null,
-    "bootstrap": null
   }
 }
