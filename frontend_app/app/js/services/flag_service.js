@@ -10,6 +10,8 @@ angular.module("app").factory("FlagService", function(FlagResource) {
 
   this.commitFlagUp = function(flag) {
     this.setFlagUp(flag);
+    flag.investigating = false;
+    flag.person_investigating = "";
     FlagResource.update({id: flag.id}, flag);
   };
 

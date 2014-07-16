@@ -1,5 +1,5 @@
 <div class="indicator-panel col-lg-6 col-md-6">
-  <div class="panel" ng-class="{'panel-success': isFlagUp(flag), 'panel-danger': (isFlagDown(flag)&&!flag.investigating), 'panel-warning': flag.investigating}">
+  <div class="panel" ng-class="{'panel-success': isFlagUp(flag), 'panel-danger': isFlagDownAndNoOneInvestigating(flag), 'panel-warning': flag.investigating}">
     <div class="panel-heading">
       <h2 class="panel-title">{{ flag.title }}</h2>
     </div> 
@@ -10,8 +10,8 @@
       <p ng-if="isFlagDown(flag)">
         Reason: {{ flag.reason }}
       </p>
-      <p ng-if="isFlagDown(flag) && flag.investigating">
-        Being investigated by: {{ flag.personInvestigating }}
+      <p ng-if="isSomeOneInvestigating(flag)">
+        Being investigated by: {{ flag.person_investigating }}
       </p>
       <p ng-if="flag.promotable">
         Can promote: {{ flag.can_promote | booleanToString }}

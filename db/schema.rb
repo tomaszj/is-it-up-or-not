@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20140716152012) do
     t.string   "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "mergeable",           default: false
-    t.string   "merge_status",        default: "ok"
-    t.boolean  "promotable",          default: false
-    t.boolean  "can_promote",         default: false
-    t.string   "personInvestigating", default: ""
-    t.boolean  "investigating",       default: false
+    t.boolean  "mergeable",            default: false
+    t.string   "merge_status",         default: "ok"
+    t.boolean  "promotable",           default: false
+    t.boolean  "can_promote",          default: false
+    t.string   "person_investigating", default: ""
+    t.boolean  "investigating",        default: false
   end
 
 end
