@@ -44,6 +44,21 @@
           <input type="text" class="form-control" ng-model="editedFlag.reason" />
         </span>
       </p>
+      <div ng-if="isFlagDown(editedFlag)">
+      <h3>Investigating</h3>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="mergeable" ng-model="editedFlag.investigating" />
+          Is someone investigating the issue?
+        </label>
+      </div>
+      <div ng-if="editedFlag.investigating" >
+        <label>
+          Who is investigating?
+         <input type="text" class="form-control" ng-model="editedFlag.person_investigating" />
+         </label>
+      </div>
+    </div>
       <h3>Promotion</h3>
       <div class="checkbox">
         <label>
