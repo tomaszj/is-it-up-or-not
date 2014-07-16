@@ -4,7 +4,11 @@ Simple app to monitor a status of environments. Allows to set them "Up" and "Dow
 
 ## Deployment
 
-App can be deployed straight to Heroku. Standard `git push heroku master` and then `heroku run rake db:migrate && heroku run rake db:seed` should suffice.
+App can be deployed simply to Heroku. Run `git push heroku master` and then `heroku run rake db:migrate && heroku run rake db:seed`.
+
+After that, you'll need to set environment variables. Right now, SECRET_KEY_BASE is needed:
+
+    $ heroku config:set SECRET_KEY_BASE=YOUR_VERY_LONG_RANDOM_HEX_SECRET
 
 ## Development
 
