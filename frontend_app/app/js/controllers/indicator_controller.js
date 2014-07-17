@@ -36,11 +36,11 @@ angular.module("app").controller("IndicatorController", function ($scope, $locat
 
   $scope.isFlagDownAndNoOneInvestigating = function(flag) {
     return FlagService.isFlagDown(flag) && !flag.investigating;
-  }
+  };
 
   $scope.isSomeOneInvestigating = function(flag) {
     return FlagService.isFlagDown(flag) && flag.investigating;
-  }
+  };
 
   $scope.setFlagUp = function(flag) {
     FlagService.setFlagUp(flag);
