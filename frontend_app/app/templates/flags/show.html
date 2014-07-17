@@ -13,16 +13,19 @@
       <p ng-if="isFlagDown(flag)">
         <span>Reason: {{ flag.reason }}</span>
       </p>
-      <p>
-        <a href="" ng-if="isFlagDown(flag)" ng-click="commitFlagUp(flag)">It's up for me!</a>  
-        <a href="" ng-if="isFlagUp(flag)" ng-click="commitFlagDown(flag)">It's down for me!</a>
-      </p>
       <p ng-if="flag.promotable">
         Can promote: {{ flag.can_promote | booleanToString }}
       </p>
       <p ng-if="flag.mergeable">
         Merging: {{ flag.merge_status }}
       </p> 
+      <p ng-if="isFlagDownAndNoOneInvestigating(flag)">
+        No one is investigating the failed build yet.
+      </p>
+      <p>
+        <a href="" ng-if="isFlagDown(flag)" ng-click="commitFlagUp(flag)">It's up for me!</a>  
+        <a href="" ng-if="isFlagUp(flag)" ng-click="commitFlagDown(flag)">It's down for me!</a>
+      </p>
     </div>
     <!-- End of Edit mode OFF form -->
   </div>
@@ -39,10 +42,10 @@
         <a href="" ng-if="isFlagUp(editedFlag)" ng-click="setFlagDown(editedFlag)">It's down for me!</a>
       </p>
       <p ng-if="isFlagDown(editedFlag)">
-        <span>
-          Reason: 
-          <input type="text" class="form-control" ng-model="editedFlag.reason" />
-        </span>
+      <label>
+        Reason: 
+        <input type="text" class="form-control" ng-model="editedFlag.reason" />
+      </label>
       </p>
       <div ng-if="isFlagDown(editedFlag)">
       <h3>Investigating</h3>
@@ -52,7 +55,7 @@
           Is someone investigating the issue?
         </label>
       </div>
-      <div ng-if="editedFlag.investigating" >
+      <div class="form-group" ng-if="editedFlag.investigating" >
         <label>
           Who is investigating?
          <input type="text" class="form-control" ng-model="editedFlag.person_investigating" />
@@ -80,10 +83,10 @@
         </label>
       </div>
       <div class="form-group" ng-if="editedFlag.mergeable">
-        <span>
+        <label>
           Current merge status: 
           <input type="text" class="form-control" ng-model="editedFlag.merge_status" />
-        </span>
+        </label>
       </div>
     </div>
     <!-- End of Edit mode ON form -->
