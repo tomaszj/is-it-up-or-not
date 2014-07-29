@@ -1,4 +1,3 @@
-// with $resource
 angular.module("app").controller("IndicatorController", function ($scope, $location, $window, FlagService) {
 
   var isInEditMode = false;
@@ -26,13 +25,12 @@ angular.module("app").controller("IndicatorController", function ($scope, $locat
     });
   };
 
-  $scope.isFlagUp = function(flag) {
-    return FlagService.isFlagUp(flag);
-  };
-
-  $scope.isFlagDown = function(flag) {
-    return FlagService.isFlagDown(flag);
-  };
+  $scope.isFlagUp = FlagService.isFlagUp;
+  $scope.isFlagDown = FlagService.isFlagDown;
+  $scope.setFlagUp = FlagService.setFlagUp;
+  $scope.commitFlagUp = FlagService.commitFlagUp;
+  $scope.setFlagDown = FlagService.setFlagDown;
+  $scope.commitFlagDown = FlagService.commitFlagDown;
 
   $scope.isFlagDownAndNoOneInvestigating = function(flag) {
     return FlagService.isFlagDown(flag) && !flag.investigating;
@@ -40,22 +38,6 @@ angular.module("app").controller("IndicatorController", function ($scope, $locat
 
   $scope.isSomeOneInvestigating = function(flag) {
     return FlagService.isFlagDown(flag) && flag.investigating;
-  };
-
-  $scope.setFlagUp = function(flag) {
-    FlagService.setFlagUp(flag);
-  };
-
-  $scope.commitFlagUp = function(flag) {
-    FlagService.commitFlagUp(flag);
-  };
-
-  $scope.setFlagDown = function(flag) {
-    FlagService.setFlagDown(flag);
-  };
-
-  $scope.commitFlagDown = function(flag) {
-    FlagService.commitFlagDown(flag);
   };
 
   $scope.destroyFlag = function(flag) {
